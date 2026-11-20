@@ -1,0 +1,69 @@
+{
+  "version": "GO_LIGHT_ROBLOX_V0_5",
+  "date": "2026-11-20",
+  "status": "LOCAL_BUILD_AND_STATIC_QA_COMPLETE_STUDIO_RUNTIME_UNVERIFIED",
+  "baseline": {
+    "game": "Inazuma Eleven GO Light Europe 3DS",
+    "mod": "R32/V2 Davi on cp0008",
+    "never_use_as_source": "R23",
+    "cci_sha256": "731ab0da2ef68d186c9c225ff0f22e421312094c822226fa77c62b76a7cf6f51",
+    "native_head": "cp0008m.xc",
+    "head_sha256": "8d5e213548d337be73f7a819a947ae7fb7e040d91096a011d88046306e33620e"
+  },
+  "created_artifacts": [
+    {
+      "name": "GO_Light_Roblox_V0_5.rbxlx",
+      "size": 46143,
+      "sha256": "18ac83b626fb62b7bcf8f96aca62781bc0a7fbef1f01ff57964d383ece253e3a"
+    },
+    {
+      "name": "GO_Light_Roblox_V0_5_Pacote.zip",
+      "size": 5480464,
+      "sha256": "439f44bbe71f389234955f206f5bf2b3f69fcc1765bd8903f638d048c120a0c5",
+      "file_count_in_zip": 19
+    }
+  ],
+  "features": {
+    "previous": "5v5 prototype scoreboard, bot AI, sprint, kick, pass, demonstration technique, minimap, camera",
+    "new_v05": [
+      "Motor6D head mount preserving 3D GLB data",
+      "Read GO_CalibSize/X/Y/Z/Yaw/Pitch/Roll from imported Model",
+      "Interactive seven-axis calibration with bounds and rate limiter",
+      "Front/three-quarter/profile/back preview camera",
+      "Transparency counters from MeshPart.Transparency",
+      "Server Output command to persist adjustments outside Play",
+      "Head state diagnostics reported per-player rather than only global"
+    ]
+  },
+  "qa": {
+    "python_unit_tests": 15,
+    "all_passed": true,
+    "xml_parse": true,
+    "embedded_luau_exactly_matches_files": true,
+    "zip_crc": true,
+    "actual_roblox_studio_execution": false,
+    "actual_r32_glb_export": false
+  },
+  "higgsfield": {
+    "project_id": "78cf6dcb-1507-4e05-91dc-b6b9f0f087c2",
+    "read_only_inspection": true,
+    "reference_game": "The Ogre",
+    "meshes": 74,
+    "vertices": 3514,
+    "armatures": 0,
+    "actions": 0,
+    "native_go_light_r32": false
+  },
+  "blocked": [
+    "R32 actual native cp0008m.xc/GLB not available in local runtime; user's CCI remains in Google Drive but large file cannot be recovered through connector in this session",
+    "Luau runtime and rig fit not verified within live Roblox Studio",
+    "Not the original GO Light full campaign or supertechniques"
+  ],
+  "next": [
+    "Run the bundled Colab or Windows converter on user's R32 CCI",
+    "Import verified cp0008m.glb in Roblox Studio 3D Importer",
+    "Use v0.5 V calibrator, inspect in 4 angles, save attrs",
+    "Execute Play test and capture Roblox Studio Output",
+    "Advance gameplay and scene fidelity using real R32 asset, no R23"
+  ]
+}
