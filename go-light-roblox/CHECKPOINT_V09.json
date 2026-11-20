@@ -1,0 +1,72 @@
+{
+  "version": "GO_LIGHT_ROBLOX_V0_9",
+  "date": "2026-11-20",
+  "previous": "go-light-roblox/CHECKPOINT_V08.json",
+  "user_goal": "Port COMPLETO de Inazuma Eleven GO Light (Europe 3DS) no Roblox, com Davi R32 cp0008, nao apenas partida 5x5",
+  "source": {
+    "cci_sha256": "731ab0da2ef68d186c9c225ff0f22e421312094c822226fa77c62b76a7cf6f51",
+    "native_head": "cp0008m.xc",
+    "native_head_sha256": "8d5e213548d337be73f7a819a947ae7fb7e040d91096a011d88046306e33620e",
+    "must_not_mix": "R23 or The Ogre 3D project"
+  },
+  "delivered": {
+    "place": {
+      "name": "GO_Light_Roblox_V0_9.rbxlx",
+      "bytes": 91987,
+      "sha256": "8bbc3ffe298676663c46caf0c16ef6d1d2ffe42bdbb6c2ae80936d1a48086769"
+    },
+    "zip": {
+      "name": "GO_Light_Roblox_V0_9_Pacote.zip",
+      "bytes": 5515299,
+      "entries": 30,
+      "sha256": "9e3d9b95fe62595757cc87b56dd38cff77c2bad11d872b5c50d6a554bdb36e61"
+    },
+    "code_sources": [
+      "GOGame.server.luau",
+      "GOControls.client.luau",
+      "GOStory.server.luau",
+      "GOStory.client.luau"
+    ],
+    "qa_script": "TESTAR_STORY_NO_STUDIO_V09.luau",
+    "roadmap": "PLANO_COMPLETO_GO_LIGHT.md"
+  },
+  "implemented": [
+    "Exploration PROTOTYPE: 3 original blockout regions (club/school, training field, town plaza)",
+    "3 original interactive NPCs with ProximityPrompt and server proximity revalidation",
+    "7 quest states, new original dialogue and per-player quest tracking",
+    "Server BindableEvent bridge between exploration and match runtime",
+    "First-goal 5v5 battle, then full 11v11 match with 10 friendly bots + Davi vs 11 rival bots",
+    "Match result check, return to hub, replay failed objective, XP and Level",
+    "DataStoreService GetAsync/UpdateAsync for story step and XP when supported, in-memory otherwise",
+    "Camera switches to Roblox character third-person exploration and hides football HUD",
+    "Bugfix: local phaseLocked declaration precedes use in possession validation",
+    "Preserves prior football actions and optional R32 GLB import adapter"
+  ],
+  "testing": {
+    "python_unit_tests": 54,
+    "passed": 54,
+    "failed": 0,
+    "xml_embedded_scripts_match": true,
+    "zip_crc": true,
+    "studio_play_executed": false,
+    "luau_compiler_run": false,
+    "actual_r32_asset_imported": false
+  },
+  "limitations": [
+    "NOT full original GO Light yet: this is an original 7-step story pilot, not original story/dialogue/maps/cutscenes",
+    "Story shares one football match runtime per Roblox server; multiplayer story isolation absent",
+    "11v11 uses generic NPC visual models and simple AI, not official full-match rules or roster selection",
+    "Original Fighting Spirits, supermoves, recruitment, shops, menus, episode content and many original game mechanics not implemented",
+    "DataStore not verified against published Roblox experience; Studio API access must be enabled for separate test universe",
+    "R32 CCI exists in linked Drive but direct download exceeds connector limit, native cp0008m.xc not embedded",
+    "Higgsfield project is The Ogre visual study, NOT Go Light R32"
+  ],
+  "plan": [
+    "Real Roblox Studio Play QA of hub NPC interactions and 5v5->11v11 transitions",
+    "Extract verified native R32 head+texture and import+fix UV/alfa/rig",
+    "Implement proper team management, player selection and full match tactics",
+    "Implement data-driven all-story episodes, scenes, travel and side tasks with source inspection",
+    "Add genuine model animation pipeline, special moves, Fighting Spirits, recruitment and inventory",
+    "Regression-test entire campaign with real saves before calling game complete"
+  ]
+}
