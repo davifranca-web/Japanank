@@ -6,7 +6,7 @@
 - Cabeça de campo: `cp0008m.xc`, 174.056 bytes, SHA256 `8d5e213548d337be73f7a819a947ae7fb7e040d91096a011d88046306e33620e`.
 
 ## v0.5 criada no ChatGPT
-- Artefatos locais: `GO_Light_Roblox_V0_5.rbxlx` (46.143 bytes) e `GO_Light_Roblox_V0_5_Pacote.zip` (5.480.471 bytes).
+- Artefatos locais: `GO_Light_Roblox_V0_5.rbxlx` (46.143 bytes) e `GO_Light_Roblox_V0_5_Pacote.zip` (5.480.464 bytes).
 - Mantém arena e partida de futebol 5x5, HUD, controle de chute/passe/técnica demonstrativa, sprint, radar e câmera.
 - **Calibrador em Play**, tecla `V`/botão `AJUSTAR DAVI`: tamanho, rotação Y/pitch/roll e offsets X/Y/Z; visualização frente/¾/perfil/nuca.
 - Montagem do Model `DaviHead` em `Motor6D` dedicado e solda `WeldConstraint` para as MeshParts.
@@ -28,4 +28,4 @@ O pacote v0.5 foi entregue no chat. Abra `GO_Light_Roblox_V0_5.rbxlx` no Roblox 
 
 ## Checksums do pacote local
 - `GO_Light_Roblox_V0_5.rbxlx`: `18ac83b626fb62b7bcf8f96aca62781bc0a7fbef1f01ff57964d383ece253e3a`
-- `GO_Light_Roblox_V0_5_Pacote.zip`: `49f074f035c866f12033458b54a3cecd05588f958f549543f40bf3012170682d`
+- `GO_Light_Roblox_V0_5_Pacote.zip`: `439f44bbe71f389234955f206f5bf2b3f69fcc1765bd8903f638d048c120a0c5`
