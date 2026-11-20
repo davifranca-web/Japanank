@@ -1,0 +1,74 @@
+{
+  "version": "GO_LIGHT_ROBLOX_V0_4",
+  "date": "2026-11-20",
+  "target": {
+    "game": "Inazuma Eleven GO Light EU 3DS",
+    "character_slot": "cp0008",
+    "visual_reference": "Davi - R32/V2",
+    "never_mix_with": "R23"
+  },
+  "r32": {
+    "cci_bytes": 3114641408,
+    "cci_sha256": "731ab0da2ef68d186c9c225ff0f22e421312094c822226fa77c62b76a7cf6f51",
+    "source_files": [
+      {
+        "name": "cp0008m.xc",
+        "sha256": "8d5e213548d337be73f7a819a947ae7fb7e040d91096a011d88046306e33620e",
+        "meshes": 1,
+        "vertices": 3580,
+        "triangles": 6552
+      },
+      {
+        "name": "cp0008e.xc",
+        "sha256": "2493d380296559aa7b623f32e4ae00d191c279d97e0fd6a99b690bba5a735636",
+        "meshes": 3,
+        "vertices": 3488,
+        "triangles": 6470
+      },
+      {
+        "name": "cp0008a.xc",
+        "sha256": "86f1db707423d3cfb569e075a6abaa574947f903fdcb09e209dcbd2b322e2540",
+        "meshes": 3,
+        "vertices": 3815,
+        "triangles": 6770
+      },
+      {
+        "name": "ev_cp0008a.xc",
+        "sha256": "f61011e285c6752efda0184a68891a4c9322af90030120996df2e7109ff8ba01",
+        "meshes": 8,
+        "vertices": 8322,
+        "triangles": 10648
+      }
+    ]
+  },
+  "tested": {
+    "python_unittests_passed": 11,
+    "rbxlx_xml_valid": true,
+    "luau_executed_in_roblox": false,
+    "native_r32_glb_exported_this_session": false
+  },
+  "deliverable": {
+    "name": "GO_Light_Roblox_V0_4_Pacote.zip",
+    "contains": [
+      "GO_Light_Roblox_V0_4.rbxlx",
+      "verified Python geometry pipeline",
+      "Google Colab notebook",
+      "Windows .bat helper",
+      "Studio import command script"
+    ],
+    "copyright_note": "Do not publish proprietary R32 assets or game image in public GitHub"
+  },
+  "higgsfield": {
+    "existing_scene_id": "78cf6dcb-1507-4e05-91dc-b6b9f0f087c2",
+    "native_go_light": false,
+    "mesh_objects": 74,
+    "vertices": 3514,
+    "armature": 0,
+    "actions": 0
+  },
+  "next_steps": [
+    "User runs v0.4 Colab or Windows pipeline on owned CCI R32 to obtain cp0008m.glb",
+    "Import GLB to Studio and run installer; inspect in Play",
+    "Fix head orientation, material alpha, UV and gameplay iteratively from actual Studio Output"
+  ]
+}
