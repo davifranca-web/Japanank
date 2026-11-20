@@ -1,47 +1,49 @@
-# GO Light × Roblox Studio — checkpoint v0.8 (20/11/2026)
+# GO Light Roblox — checkpoint v0.9 (20/11/2026)
 
-**Continuacao real da v0.7:** alvo Inazuma Eleven GO Light europeu (3DS), R32/V2, Davi em cp0008. Nao confundir com R23 nem com Inazuma Eleven 3: The Ogre.
+**META FINAL: IMPLEMENTAR O JOGO INTEIRO**, não somente a partida 5x5. Base única: *Inazuma Eleven GO Light* europeu (3DS), checkpoint R32/V2, personagem Davi no slot Tenma `cp0008`. Nunca promover recursos R23 nem o modelo The Ogre a fonte nativa R32.
 
-## Artefatos gerados nesta conversa
+## O que a v0.9 IMPLEMENTA (e o que não)
 
-Os binarios estao anexados na conversa do ChatGPT, nao publicados no repositorio:
+- A antiga arena da v0.8 foi preservada com chute carregado, domínio, passe, técnica demonstrativa, desarme, IA simples, HUD e cabeça opcional Motor6D.
+- Foi criado um **mundo original de exploração** (clube/escola, campo de treino, praça), três NPCs ProximityPrompt e **sete tarefas de um prólogo de teste**.
+- A campanha piloto alterna exploração, **batalha 5x5 ao primeiro gol**, exploração e **partida 11x11** (10 NPCs azuis + Davi contra 11 NPCs vermelhos), terminando no mapa.
+- Nova UI de objetivos, diálogos originais, viagem rápida validada no servidor, XP/nível, e tentativa de salvar etapa e XP via DataStore.
+- Corrigida a referência prematura à variável `phaseLocked` existente na v0.8.
+- **Ainda não é a campanha oficial completa**: mapas e diálogos são placeholders criados para o port, sem assets da Nintendo.
 
-| Arquivo | Tamanho | SHA-256 |
+## Downloads gerados no chat
+
+| Arquivo | Bytes | SHA-256 |
 |---|---:|---|
-| `GO_Light_Roblox_V0_8.rbxlx` | 67.120 bytes | `72d0390ac577f3d584b235ee7869ae24d9221a53485f66a2dcc805438033e252` |
-| `GO_Light_Roblox_V0_8_Pacote.zip` | 5.493.943 bytes | `b33dd5f4bce9158dbf85082737d58bc376c75c518683efd42493817fab5f0556` |
+| `GO_Light_Roblox_V0_9.rbxlx` | 91.987 | `8bbc3ffe298676663c46caf0c16ef6d1d2ffe42bdbb6c2ae80936d1a48086769` |
+| `GO_Light_Roblox_V0_9_Pacote.zip` | 5.515.299 | `9e3d9b95fe62595757cc87b56dd38cff77c2bad11d872b5c50d6a554bdb36e61` |
 
-O ZIP acompanha scripts Luau, o `.rbxlx`, a ponte de extracao/conversao GLB do R32, auditorias, notebook e testes. **Nenhuma malha `.xc`, ROM comercial ou `.glb` importado foi distribuido.**
+O ZIP contém os quatro scripts Luau, o `.rbxlx`, a ponte R32 anterior, testes, instruções de instalação, ferramenta de auditoria Studio e roadmap. **Não** inclui ROM/CCI/`.xc`/GLB nativos comerciais.
 
-## Evolucao jogavel v0.8
+## Testes
 
-- **G / R1 / touch**: dominar ou soltar a bola. Se a bola estiver lenta e perto do jogador, o dominio tambem pode ocorrer automaticamente.
-- A bola passa a acompanhar Davi pela frente; o servidor, nao o cliente, calcula posicao e movimento. Validacoes: distancia de ate 7,3 studs, velocidade da bola, saude e cooldown; na captura automatica, limite de velocidade mais restritivo.
-- **E (segurar e soltar)** chute carregado; **Q** passe; **R** tecnica visual independente; **F** desarme; **Shift** corrida; **C** camera; **V** calibrador R32; **J** diagnostico no Output; **N** revanche.
-- Na liberacao da bola, o servidor a devolve a fisica com propriedade de rede do servidor e impede retomada instantanea.
-- Bots rivais podem roubar a bola; HUD exibe dominio e estatisticas, incluindo tempo controlado, dominios e roubadas.
-- A posse e encerrada em gols, laterais, reinicio, intervalos, fim, morte do avatar e desconexao.
-- Mantem 5x5, placar, dois tempos, goleiros, mini-mapa, stamina, TP e encaixe opcional Motor6D para cabeça GLB atribuida ao recurso R32 (a atribuicao por etiqueta nao substitui hash dos bytes originais).
+**54/54 testes automatizados Python aprovados**: integridade do XML, correspondência literal dos quatro scripts incorporados, ZIP, verificação de bytes R32 sintéticos, compatibilidade da partida e presença das transições de história.
 
-## QA e teste real
+**Não foi realizado Play real no Roblox Studio nem compilação oficial de Luau aqui.** O título de piloto jogável significa que existe fluxo em código para executar no Studio, não que esse fluxo já foi observado funcionando no motor.
 
-**42/42 testes automatizados de Python passaram.** Eles analisam estrutura, regras, simulacoes de matematica, integridade do ZIP e igualdade literal dos scripts embutidos no XML. **Nenhuma execucao real v0.8 no Roblox Studio foi feita nesta conversa.**
+## Como testar
 
-1. Abra `GO_Light_Roblox_V0_8.rbxlx` no Studio; clique **Play**.
-2. Aproxime-se da bola, pressione **G**, caminhe e observe se a bola permanece na frente; em seguida use **E** para chutar ou **Q** para passar.
-3. Permita que os rivais se aproximem e observe uma roubada; confirme que o chute volta a usar a fisica.
-4. Pressione **J** e veja **View > Output** no contexto Server.
-5. Opcional: cole [TESTAR_NO_STUDIO_PLAY_V08.luau](TESTAR_NO_STUDIO_PLAY_V08.luau) na Command Bar do servidor durante Play; sao 11 verificacoes de estrutura, nao testes de render/partida completos.
-6. Verifique gol, saidas, intervalo, revanche, controles mobile e imports no ambiente real.
+1. Abra o `GO_Light_Roblox_V0_9.rbxlx` no Roblox Studio e pressione **Play**. Encontre o representante do clube.
+2. Converse, visite o treinador (botão CAMPO), vença a batalha curta, visite o olheiro (botão PRAÇA), inicie a partida 11x11, volte ao clube.
+3. **WASD** mover; **E** carregar/chutar; **Q** passe; **F** desarme; **G** domínio; **R** técnica original de demonstração; **V** calibrador Davi; **J** diagnóstico; **M** menu de viagem.
+4. Em **View > Output**, contexto Server, confira erros. Use `TESTAR_STORY_NO_STUDIO_V09.luau` da pasta do pacote na Command Bar para checagens estruturais; elas não substituem a partida manual.
+5. Para testar save persistente, use uma **cópia publicada de testes**, com Studio API Services habilitado. O DataStore não está validado em sessão publicada.
 
-## Bloqueios reais
+## Recursos R32 e Higgsfield
 
-Ainda nao foi recuperado o binario real `cp0008m.xc` do checkpoint R32/V2. Hash esperado: `8d5e213548d337be73f7a819a947ae7fb7e040d91096a011d88046306e33620e`. A pasta R32 do Drive continha somente o checkpoint JSON e notebook; o CCI de 3,11 GB ultrapassou o limite anterior do conector. O projeto 3D Higgsfield encontrado e um estudo independente **The Ogre**, nao e fonte valida de GO Light.
+A CCI R32/V2 de 3.114.641.408 bytes está identificada no Drive, mas o conector desta sessão não conseguiu baixá-la. O `cp0008m.xc` original tem SHA `8d5e213548d337be73f7a819a947ae7fb7e040d91096a011d88046306e33620e`. Sua conversão real, validação de UV/alfa/rig e importação Studio continuam pendentes.
 
-Este projeto e um prototipo de jogo novo implementado em Luau, **nao** a ROM executando nativamente no Roblox e **nao** campanha integral.
+O projeto Higgsfield encontrado, `78cf6dcb-1507-4e05-91dc-b6b9f0f087c2`, é um estudo *The Ogre*, não o GLB nativo do GO Light, e foi deixado intacto.
 
-## Historico de checkpoints
+## Checkpoints e escopo completo
 
-- [v0.6](CHECKPOINT_V06.json)
-- [v0.7](CHECKPOINT_V07.json)
-- [v0.8](CHECKPOINT_V08.json)
+- [CHECKPOINT_V09.json](CHECKPOINT_V09.json) — artefatos, SHA, testes e pendências.
+- [ESCOPO_JOGO_COMPLETO.md](ESCOPO_JOGO_COMPLETO.md) — matriz integral de campanha, futebol, elenco, técnicas, Fighting Spirits, saves e mais.
+- [CHECKPOINT_V08.json](CHECKPOINT_V08.json) — checkpoint anterior.
+
+Não publicar arquivos proprietários extraídos do jogo original sem autorização.
