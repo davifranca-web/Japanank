@@ -1,0 +1,60 @@
+{
+  "version": "GO_LIGHT_ROBLOX_V0_7",
+  "date": "2026-11-20",
+  "previous_checkpoint": "go-light-roblox/CHECKPOINT_V06.json",
+  "baseline": {
+    "game": "Inazuma Eleven GO Light (EU, 3DS)",
+    "mod": "R32/V2 - Davi em cp0008",
+    "never_merge": "R23",
+    "cci_sha256": "731ab0da2ef68d186c9c225ff0f22e421312094c822226fa77c62b76a7cf6f51",
+    "native_model": "cp0008m.xc",
+    "native_model_sha256": "8d5e213548d337be73f7a819a947ae7fb7e040d91096a011d88046306e33620e"
+  },
+  "build": {
+    "rbxlx": {
+      "name": "GO_Light_Roblox_V0_7.rbxlx",
+      "bytes": 60128,
+      "sha256": "6eb4135f66839dac23167464afd3c6bd9a918d685f6abf42fc937ff9be8d2466"
+    },
+    "zip": {
+      "name": "GO_Light_Roblox_V0_7_Pacote.zip",
+      "bytes": 5490088,
+      "sha256": "a2975521aeb6b84f82ca9c45fe1f1e4f8f8a1bb8c40e560c6d6b8d3042459a2b",
+      "entries": 23
+    }
+  },
+  "features": [
+    "ShotStart + ShotRelease: server-measured max 1.25 seconds, validated distance 12.5, server-computed 72..148 shot impulse, charged shot stats",
+    "Tackle: F / controller L1, distance <=9.5 and server cooldown 1.9s, tackles stat",
+    "J diagnostic command prints bots, ball, match phase, per-player head preview status to server Output",
+    "Client HUD includes shot charge bar, touch hold/release, gamepad/keyboard controls",
+    "Replays, halftime, kickoff and balls out clear pending shot charges",
+    "Preserved 5v5, 300s two halves, scoreboard, Motor6D imported R32 head preview, camera/head calibrator"
+  ],
+  "qa": {
+    "python_tests": 35,
+    "passed": 35,
+    "failed": 0,
+    "xml_script_integrity": true,
+    "zip_crc_checked": true,
+    "rbxlx_verified": true,
+    "roblox_studio_runtime_tested": false,
+    "real_native_r32_model_imported": false,
+    "luau_engine_compiled": false
+  },
+  "limitations": [
+    "Standalone Roblox football prototype, not native 3DS runtime / complete story/cutscenes/special moves",
+    "The R32 Drive folder has only verified checkpoint JSON and notebook; no native 5-resource ZIP present there",
+    "R32 V2 CCI about 3.11 GB, beyond connector's 256MB extraction limit in previous request",
+    "Only Higgsfield 3D Jutsu project available is The Ogre visual reference (not GO Light, not R32 source)",
+    "No real R32 mesh or other copyrighted game assets shipped; existing GLB converter needs user's legal source and Studio import",
+    "Runtime manual Play, ball physics, NPC AI and rendering still require actual Roblox Studio QA"
+  ],
+  "next": [
+    "Open v0.7 .rbxlx in Studio / Play",
+    "Near ball hold E for ~1 s then release; F to tackle; J to print server diagnostic",
+    "Check errors and gameplay in Studio Output",
+    "Extract 5 native R32 resources using own CCI; import GLB and run head diagnostics",
+    "Correct problems found in actual Studio runtime before declaring full playable port"
+  ]
+}
