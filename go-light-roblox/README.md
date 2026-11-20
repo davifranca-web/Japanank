@@ -1,39 +1,47 @@
-# GO Light × Roblox Studio — checkpoint v0.7 (20/11/2026)
+# GO Light × Roblox Studio — checkpoint v0.8 (20/11/2026)
 
-Este projeto prossegue da v0.6 sem reiniciar. **Alvo único: Inazuma Eleven GO Light europeu, checkpoint R32/V2, Davi no slot cp0008.** Arquivos anteriores R23 não substituem R32.
+**Continuacao real da v0.7:** alvo Inazuma Eleven GO Light europeu (3DS), R32/V2, Davi em cp0008. Nao confundir com R23 nem com Inazuma Eleven 3: The Ogre.
 
-## Arquivos gerados neste chat
+## Artefatos gerados nesta conversa
 
-- **GO_Light_Roblox_V0_7.rbxlx** (60.128 bytes), SHA256 `6eb4135f66839dac23167464afd3c6bd9a918d685f6abf42fc937ff9be8d2466`.
-- **GO_Light_Roblox_V0_7_Pacote.zip** (5.490.088 bytes, 23 entradas), SHA256 `a2975521aeb6b84f82ca9c45fe1f1e4f8f8a1bb8c40e560c6d6b8d3042459a2b`.
-- Esses binários estão anexados à resposta do ChatGPT, **não** ao repositório.
-- No ZIP: scripts Luau, conversor e auditorias R32, notebook Colab, testes Python, instalador GLB, teste `TESTAR_NO_STUDIO_PLAY_V07.luau`.
+Os binarios estao anexados na conversa do ChatGPT, nao publicados no repositorio:
 
-## Implementado
+| Arquivo | Tamanho | SHA-256 |
+|---|---:|---|
+| `GO_Light_Roblox_V0_8.rbxlx` | 67.120 bytes | `72d0390ac577f3d584b235ee7869ae24d9221a53485f66a2dcc805438033e252` |
+| `GO_Light_Roblox_V0_8_Pacote.zip` | 5.493.943 bytes | `b33dd5f4bce9158dbf85082737d58bc376c75c518683efd42493817fab5f0556` |
 
-- Mantida a arena Roblox 5x5 e o placar, duas metades de 150 segundos, início após gol, laterais, estatísticas e revanche.
-- **Chute carregado**: início/soltura via RemoteEvent; o servidor marca `os.clock()` na entrada e limita o período a 1,25 segundos. Força entre 72–148, proximidade validada em até 12,5 studs e cooldown geral de 0,44 segundos; o cliente não envia força nem duração.
-- **Desarme [F/L1]**: impulso de bola validado no servidor com proximidade de 9,5 studs e cooldown de 1,9 segundo. Campo `TacklesBlue`.
-- **Auditoria no jogo [J]**: imprime na aba **Server > Output** um diagnóstico da bola, 9 NPCs, fase, placar e disponibilidade da cabeça R32. Limitação: indica só componentes declarados, não testa renderização.
-- **HUD** para barra de potência e comandos teclado, controle e touch, mantendo Q passe, R técnica demonstrativa, Shift corrida, C câmera, V calibrador de cabeça, N revanche.
-- Mantido o encaixe `Motor6D` configurável da cabeça importada, que exige recurso `cp0008m.glb` gerado da própria R32 e importado pelo Roblox Studio.
+O ZIP acompanha scripts Luau, o `.rbxlx`, a ponte de extracao/conversao GLB do R32, auditorias, notebook e testes. **Nenhuma malha `.xc`, ROM comercial ou `.glb` importado foi distribuido.**
 
-## Testes e limitações
+## Evolucao jogavel v0.8
 
-**35/35 testes Python aprovados**, incluindo o match XML ↔ scripts Luau originais, salvaguardas do extrator, geometria sintética e integridade do ZIP. **Não são testes reais de Roblox Studio**, compilação oficial de Luau, renderização ou comportamento em partidas. A v0.7 não foi executada no Studio durante este turno.
+- **G / R1 / touch**: dominar ou soltar a bola. Se a bola estiver lenta e perto do jogador, o dominio tambem pode ocorrer automaticamente.
+- A bola passa a acompanhar Davi pela frente; o servidor, nao o cliente, calcula posicao e movimento. Validacoes: distancia de ate 7,3 studs, velocidade da bola, saude e cooldown; na captura automatica, limite de velocidade mais restritivo.
+- **E (segurar e soltar)** chute carregado; **Q** passe; **R** tecnica visual independente; **F** desarme; **Shift** corrida; **C** camera; **V** calibrador R32; **J** diagnostico no Output; **N** revanche.
+- Na liberacao da bola, o servidor a devolve a fisica com propriedade de rede do servidor e impede retomada instantanea.
+- Bots rivais podem roubar a bola; HUD exibe dominio e estatisticas, incluindo tempo controlado, dominios e roubadas.
+- A posse e encerrada em gols, laterais, reinicio, intervalos, fim, morte do avatar e desconexao.
+- Mantem 5x5, placar, dois tempos, goleiros, mini-mapa, stamina, TP e encaixe opcional Motor6D para cabeça GLB atribuida ao recurso R32 (a atribuicao por etiqueta nao substitui hash dos bytes originais).
 
-No Google Drive, a pasta `GO_LIGHT_R32_AZAHAR_QA` contém apenas o JSON de identidade e o notebook; o ZIP de 5 recursos R32 não foi localizado nessa pasta. O arquivo CCI R32/V2 de 3,11 GB ultrapassa o limite de download do conector. Hash nativo do `cp0008m.xc`: `8d5e213548d337be73f7a819a947ae7fb7e040d91096a011d88046306e33620e`.
+## QA e teste real
 
-O único projeto 3D no Higgsfield encontrado é **Davi Ultimate Edition — The Ogre**, que não é o modelo R32 nativo. **Não importar aquele GLB como cp0008m**. O jogo hoje é um **protótipo independente no Roblox**; não representa um port 100% da ROM, da campanha, dos rigs ou das técnicas do 3DS.
+**42/42 testes automatizados de Python passaram.** Eles analisam estrutura, regras, simulacoes de matematica, integridade do ZIP e igualdade literal dos scripts embutidos no XML. **Nenhuma execucao real v0.8 no Roblox Studio foi feita nesta conversa.**
 
-## Procedimento para testar no Studio
+1. Abra `GO_Light_Roblox_V0_8.rbxlx` no Studio; clique **Play**.
+2. Aproxime-se da bola, pressione **G**, caminhe e observe se a bola permanece na frente; em seguida use **E** para chutar ou **Q** para passar.
+3. Permita que os rivais se aproximem e observe uma roubada; confirme que o chute volta a usar a fisica.
+4. Pressione **J** e veja **View > Output** no contexto Server.
+5. Opcional: cole [TESTAR_NO_STUDIO_PLAY_V08.luau](TESTAR_NO_STUDIO_PLAY_V08.luau) na Command Bar do servidor durante Play; sao 11 verificacoes de estrutura, nao testes de render/partida completos.
+6. Verifique gol, saidas, intervalo, revanche, controles mobile e imports no ambiente real.
 
-1. Abra o `.rbxlx` v0.7 em **File > Open from File**; clique **Play**.
-2. Corra para perto da bola; segure **E** cerca de um segundo e solte; pressione **F** perto da bola para testar o desarme; jogue e verifique laterais/gols.
-3. Pressione **J**; abra **View > Output** e selecione **Server** para encontrar `[GO v0.7 QA]`.
-4. Opcional: em Play e contexto **Server**, cole [TESTAR_NO_STUDIO_PLAY_V07.luau](TESTAR_NO_STUDIO_PLAY_V07.luau) na Command Bar, e observe PASS/FAIL.
-5. Depois de obter os recursos legítimos R32, use notebook/conversor, importe `cp0008m.glb` no Studio, execute o instalador e use V para verificar visual e calibração. Não declarar importação concluída antes de teste real.
+## Bloqueios reais
 
-**Histórico:** [CHECKPOINT_V06.json](CHECKPOINT_V06.json), [CHECKPOINT_V07.json](CHECKPOINT_V07.json).
+Ainda nao foi recuperado o binario real `cp0008m.xc` do checkpoint R32/V2. Hash esperado: `8d5e213548d337be73f7a819a947ae7fb7e040d91096a011d88046306e33620e`. A pasta R32 do Drive continha somente o checkpoint JSON e notebook; o CCI de 3,11 GB ultrapassou o limite anterior do conector. O projeto 3D Higgsfield encontrado e um estudo independente **The Ogre**, nao e fonte valida de GO Light.
 
-Não publicar arquivos proprietários de jogos comerciais sem autorização.
+Este projeto e um prototipo de jogo novo implementado em Luau, **nao** a ROM executando nativamente no Roblox e **nao** campanha integral.
+
+## Historico de checkpoints
+
+- [v0.6](CHECKPOINT_V06.json)
+- [v0.7](CHECKPOINT_V07.json)
+- [v0.8](CHECKPOINT_V08.json)
