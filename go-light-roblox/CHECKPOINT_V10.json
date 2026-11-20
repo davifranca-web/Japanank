@@ -1,0 +1,87 @@
+{
+  "version": "GO_LIGHT_ROBLOX_V0_10",
+  "date": "2026-11-20",
+  "previous": "go-light-roblox/CHECKPOINT_V09.json",
+  "goal": "recriar o jogo Inazuma Eleven GO Light EU INTEIRO no Roblox; Davi na base cp0008 R32/V2; nao promover R23 ou The Ogre",
+  "baseline": {
+    "game": "Inazuma Eleven GO Light EU (3DS)",
+    "cci_size": 3114641408,
+    "cci_sha256": "731ab0da2ef68d186c9c225ff0f22e421312094c822226fa77c62b76a7cf6f51",
+    "native_head": "cp0008m.xc",
+    "native_head_sha256": "8d5e213548d337be73f7a819a947ae7fb7e040d91096a011d88046306e33620e"
+  },
+  "build": {
+    "rbxlx": {
+      "filename": "GO_Light_Roblox_V0_10.rbxlx",
+      "bytes": 112837,
+      "sha256": "f82d6a70c0f887c9dd1af8a7e9345f3b1991f9e76dcbd9306bc89f661405d8fc"
+    },
+    "zip": {
+      "filename": "GO_Light_Roblox_V0_10_Pacote.zip",
+      "bytes": 5531658,
+      "entries": 36,
+      "sha256": "361c449c87326fa68dd95ee66b54399feaf6e83ce9f626b075961ab3103f38f7"
+    }
+  },
+  "implemented": [
+    "V0.9 chapter pilot preserved: exploration 3 authored original areas, 3 provisional NPCs, seven tasks, 5v5 and 11v11 story matches",
+    "10 initial original placeholder teammates plus human Davi, 6 optional recruitable original placeholder players",
+    "Server-authoritative recruiting: cost, unlock step, duplicate, slot-role, active match and remote cooldown validation",
+    "Individual player profile mirror with ten squad positions and server-generated labels, source of player catalog never trusted from client",
+    "Named squad applied to 5v5 and 11v11 blue NPCs at match start; temporary player ratings subtly affect NPC running and shooting",
+    "UI menu EQUIPE B or touch with lineup and recruitable player catalog",
+    "Story milestone credit rewards issued idempotently at steps >=4 and >=6",
+    "Server DataStore best-effort with in-memory fallback; save concurrency between servers not yet production-safe",
+    "5v5 duration 60 seconds, full 11v11 duration 600 seconds total (2 halves 300 seconds), aligned with Nintendo overview"
+  ],
+  "sources": {
+    "nintendo_go_light": "https://www.nintendo.com/en-gb/Games/Nintendo-3DS-games/Inazuma-Eleven-GO-Light-883636.html",
+    "nintendo_palpack": "https://www.nintendo.com/en-gb/News/2014/June/In-shops-and-on-Nintendo-eShop-now-Inazuma-Eleven-GO-Light-and-Inazuma-Eleven-GO-Shadow-894016.html",
+    "roblox_datastore": "https://create.roblox.com/docs/cloud-services/data-stores",
+    "roblox_server_validation": "https://create.roblox.com/docs/scripting/security/client-server-boundary"
+  },
+  "qa": {
+    "python_tests": 64,
+    "passed": 64,
+    "failed": 0,
+    "xml_valid": true,
+    "all_six_embedded_luau_sources_identical": true,
+    "zip_crc": true,
+    "roblox_studio_engine_tested": false,
+    "native_r32_head_imported": false,
+    "real_recruitment_persisted_online": false
+  },
+  "deliverables": [
+    "GOGame.server.luau",
+    "GOControls.client.luau",
+    "GOStory.server.luau",
+    "GOStory.client.luau",
+    "GOClub.server.luau",
+    "GOClub.client.luau",
+    "TESTAR_ELENCO_NO_STUDIO_V10.luau",
+    "CATALOGO_PROTOTIPO_V10.json",
+    "PLANO_COMPLETO_GO_LIGHT.md",
+    "notebook Colab R32 and exporter"
+  ],
+  "higgsfield": {
+    "project_id": "78cf6dcb-1507-4e05-91dc-b6b9f0f087c2",
+    "game": "The Ogre",
+    "native_go_light": false,
+    "scene_unmodified": true
+  },
+  "blockers": [
+    "No native cp0008m.xc bytes supplied to this runtime; direct CCI download over connector size limit",
+    "No actual Roblox Studio Play test",
+    "Campaign full story, scenes and character-specific skills absent",
+    "Native recruitment PalPack, real rosters, tactical systems, spirits, graphics, animation, shop/inventory/trading/multiplayer not done",
+    "Multiplayer story currently uses shared server match",
+    "DataStore concurrency and cross-server consistency need production work"
+  ],
+  "next_priority": [
+    "Run Play test on v0.10: quest->5v5->hub->recruit->assign->11v11 and save/reload in test universe",
+    "Extract and verify R32 resources on owned CCI and import cp0008m.glb; inspect head 4 views in Roblox",
+    "Expand story to data-driven chapters, location graph, cinematics, scripted match objectives, roster mapping",
+    "Build special moves and Fighting Spirits state machine with real gameplay effects",
+    "Apply regression coverage against save files and real Studio logs"
+  ]
+}
