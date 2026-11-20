@@ -1,0 +1,58 @@
+{
+  "version": "GO_LIGHT_ROBLOX_V0_8",
+  "date": "2026-11-20",
+  "previous": "go-light-roblox/CHECKPOINT_V07.json",
+  "baseline": {
+    "game": "GO Light EU 3DS",
+    "character": "R32/V2 cp0008 Davi",
+    "not_r23": true,
+    "not_the_ogre": true,
+    "cci_sha256": "731ab0da2ef68d186c9c225ff0f22e421312094c822226fa77c62b76a7cf6f51",
+    "native_model": "cp0008m.xc",
+    "native_model_sha256": "8d5e213548d337be73f7a819a947ae7fb7e040d91096a011d88046306e33620e"
+  },
+  "artifacts": {
+    "GO_Light_Roblox_V0_8.rbxlx": {
+      "bytes": 67120,
+      "sha256": "72d0390ac577f3d584b235ee7869ae24d9221a53485f66a2dcc805438033e252"
+    },
+    "GO_Light_Roblox_V0_8_Pacote.zip": {
+      "bytes": 5493943,
+      "sha256": "b33dd5f4bce9158dbf85082737d58bc376c75c518683efd42493817fab5f0556",
+      "entries": 24
+    }
+  },
+  "implemented": [
+    "Control action G / ButtonR1: optional manual possession; automatic trapping at low ball velocity near player",
+    "Server owns ball state, checks proximity, humanoid health, ball speed and release cooldown",
+    "While possessing, physics ball anchored and carried ahead of player by server-authoritative Heartbeat",
+    "Before a shot/pass/technique, ball released, unanchored and network ownership set to server",
+    "Rival NPC may steal possession after >=0.8 s and 5.7 stud reach, with cooldown and status updates",
+    "Release on goal, out of bounds, reset, halftime, end of game, player disconnect and character death",
+    "HUD possession indicator, DribblesBlue, StealsRed, ControlSecondsBlue; diagnostics extended",
+    "Preserves v0.7 and R32 GLB import adapter with explicit source label"
+  ],
+  "tests": {
+    "python_tests": 42,
+    "pass": 42,
+    "fail": 0,
+    "xml_scripts_exact": true,
+    "zip_crc": true,
+    "luau_runtime_tested": false,
+    "roblox_studio_tested": false,
+    "actual_r32_model_imported": false
+  },
+  "limitations": [
+    "Prototype made with independent Luau logic, not 3DS GO Light executable or full campaign",
+    "No cp0008m.xc R32 bytes found; only hash/verified checkpoint and R32 notebook; Higgsfield project is an unrelated The Ogre study",
+    "Manual Play tests and visual checks of ball/dribble physics are still required",
+    "ZIP is attached to ChatGPT conversation, not hosted in GitHub"
+  ],
+  "next": [
+    "Open v0.8 .rbxlx in Roblox Studio and click Play",
+    "Use G to carry ball, E to shoot, Q to pass, F to tackle",
+    "Inspect View > Output after J and run 11-point Server command bar QA script",
+    "Test out-of-bounds, goalkeeper, halftime, rematch and NPC steals",
+    "Integrate real R32 cp0008m.xc after lawful user-side extraction and verified hashes"
+  ]
+}
