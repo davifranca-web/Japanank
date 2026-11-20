@@ -1,27 +1,31 @@
-# GO Light × Roblox Studio — checkpoint v0.4 (20/11/2026)
+# GO Light × Roblox Studio — checkpoint v0.5 (20/11/2026)
 
-## Estado confirmado
-- Baseline R32/V2 (GO Light Europa): **NÃO** substituir por R23.
-- CCI de origem conhecido: `3114641408` bytes, SHA-256 `731ab0da2ef68d186c9c225ff0f22e421312094c822226fa77c62b76a7cf6f51`.
-- Cabeça de campo: `cp0008m.xc` (174056 bytes), SHA-256 `8d5e213548d337be73f7a819a947ae7fb7e040d91096a011d88046306e33620e`.
-- Outros recursos: `cp0008e.xc`, `cp0008a.xc`, `ev_cp0008a.xc`, `cp0008a.xi`.
-- A v0.4 contém um protótipo de futebol 5x5 para Roblox e código de ponte exportando geometria **estática** R32 para GLB.
+## Origem e preservação
+- Base única: **GO Light europeu R32/V2**, slot `cp0008`; **não mesclar R23**.
+- CCI de origem: 3.114.641.408 bytes, SHA256 `731ab0da2ef68d186c9c225ff0f22e421312094c822226fa77c62b76a7cf6f51`.
+- Cabeça de campo: `cp0008m.xc`, 174.056 bytes, SHA256 `8d5e213548d337be73f7a819a947ae7fb7e040d91096a011d88046306e33620e`.
 
-## Implementado na v0.4
-1. Importação manual do GLB pelo **Studio Import 3D**, seguida do instalador que registra `ReplicatedStorage/GO_Light_Assets/DaviHead`.
-2. O runtime só anexa a malha e esconde a cabeça original quando existe um `Model` rotulado com origem R32 declarada, contendo `MeshPart` e `MeshId`.
-3. Pipeline local `preparar_glb_r32_v04.py`: exige SHA256 dos cinco bytes de origem e contagens nativas, verifica UV, índices e finitude da malha GLB. Não sobrescreve saídas antigas.
-4. Notebook Colab autossuficiente e .BAT Windows no pacote local do chat.
-5. Testes automatizados de Python: **11/11 passaram**. XML `.rbxlx` inspecionado.
+## v0.5 criada no ChatGPT
+- Artefatos locais: `GO_Light_Roblox_V0_5.rbxlx` (46.143 bytes) e `GO_Light_Roblox_V0_5_Pacote.zip` (5.480.471 bytes).
+- Mantém arena e partida de futebol 5x5, HUD, controle de chute/passe/técnica demonstrativa, sprint, radar e câmera.
+- **Calibrador em Play**, tecla `V`/botão `AJUSTAR DAVI`: tamanho, rotação Y/pitch/roll e offsets X/Y/Z; visualização frente/¾/perfil/nuca.
+- Montagem do Model `DaviHead` em `Motor6D` dedicado e solda `WeldConstraint` para as MeshParts.
+- Diagnóstico de `MeshPart`, `MeshId`, texturas e número de partes com transparência; esconder cabeça base somente após montagem.
+- Botão **SALVAR NO OUTPUT** gera instruções `GO_Calib*` para gravar atributos no Studio fora de Play.
+- Segurança básica: servidor valida origem declarada (não prova criptográfica dentro do Roblox), comandos permitidos, limites de valores e intervalo entre ajustes.
 
-## Limitações verificadas
-- Drive connector não baixa a CCI de 3,1 GB (limite de 256 MiB). O usuário pode executar a ponte sobre **sua própria cópia** no Windows ou Colab.
-- Os recursos R32 reais não foram exportados nesta sessão e o Studio não foi executado aqui.
-- A cena Higgsfield "Davi Ultimate Edition — The Ogre" é outro estudo: 74 malhas, 3514 vértices, **sem armature/animações**. NÃO é a malha nativa GO Light.
-- A v0.4 **não** importa rig, técnicas originais, cutscenes ou campanha. Não é a ROM original nem jogo completo.
-- A validação SHA256 é **externa** ao Roblox: as etiquetas de procedência no Studio são declarações, não prova criptográfica.
+## Testes e limites
+- **15/15 testes Python passaram**, incluindo 11 anteriores de extração/GLB e 4 testes estáticos de v0.5. XML de `.rbxlx` parseado; fontes Luau incorporadas conferem com os arquivos individuais.
+- **Não executado no Roblox Studio nesta sessão:** montagem visual e técnica demonstrativa ainda sem validação no engine, não há campanha ou técnicas originais GO Light.
+- **Não exportado nesta sessão:** `cp0008m.glb` genuíno. O CCI R32 é grande demais para a recuperação direta oferecida pelo conector; a etapa de conversão roda na cópia local do usuário ou no Colab.
+- Higgsfield rev. 9: estudo **The Ogre**, 74 meshes/3514 vértices, 0 armatures/animações; **não é** o modelo R32 GO Light e não foi usado como substituto.
+- `GO_HeadTransparentParts` mede somente transparência da propriedade de MeshPart, não prova correção de alfa da textura/material.
 
-## Código e propriedade intelectual
-Código próprio e documentação podem ser versionados publicamente; **NÃO** comitar, publicar ou redistribuir CCI, ROM, GLBs derivados do jogo, XPCK/XC/XI ou texturas proprietárias. Dependência Studio Eleven é MIT e está identificada.
+## Arquivos e uso
+O pacote v0.5 foi entregue no chat. Abra `GO_Light_Roblox_V0_5.rbxlx` no Roblox Studio. Para encaixar Davi, execute o conversor R32 no seu PC/Colab, importe `cp0008m.glb`, selecione o Model externo e rode `INSTALAR_DAVI_R32_NO_STUDIO.luau` na Barra de Comando. Play → `V` → ajuste e salve.
 
-O arquivo `verify_and_extract_r32.py` inicial continua como extrator independente; o pipeline atualizado e o projeto do Studio estão no pacote v0.4 fornecido nesta conversa.
+**Preservação:** Não publicar em GitHub arquivos CCI, XC/XI, GLB convertido do jogo ou texturas comerciais sem autorização. Este repositório mantém apenas checkpoints/código próprio, não binários proprietários.
+
+## Checksums do pacote local
+- `GO_Light_Roblox_V0_5.rbxlx`: `18ac83b626fb62b7bcf8f96aca62781bc0a7fbef1f01ff57964d383ece253e3a`
+- `GO_Light_Roblox_V0_5_Pacote.zip`: `49f074f035c866f12033458b54a3cecd05588f958f549543f40bf3012170682d`
