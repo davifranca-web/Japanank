@@ -1,49 +1,59 @@
-# GO Light Roblox — checkpoint v0.9 (20/11/2026)
+# GO Light Roblox — checkpoint v0.10 (20/11/2026)
 
-**META FINAL: IMPLEMENTAR O JOGO INTEIRO**, não somente a partida 5x5. Base única: *Inazuma Eleven GO Light* europeu (3DS), checkpoint R32/V2, personagem Davi no slot Tenma `cp0008`. Nunca promover recursos R23 nem o modelo The Ogre a fonte nativa R32.
+**META FINAL: recriação integral do Inazuma Eleven GO Light europeu no Roblox** — campanha, exploração, 5x5, 11x11, escalação, recrutamento, técnicas, Keshin, menus, saves e personagens. Base única **R32/V2**, Davi no slot Tenma cp0008. **Não misturar R23 ou The Ogre**.
 
-## O que a v0.9 IMPLEMENTA (e o que não)
+## Entrega v0.10
 
-- A antiga arena da v0.8 foi preservada com chute carregado, domínio, passe, técnica demonstrativa, desarme, IA simples, HUD e cabeça opcional Motor6D.
-- Foi criado um **mundo original de exploração** (clube/escola, campo de treino, praça), três NPCs ProximityPrompt e **sete tarefas de um prólogo de teste**.
-- A campanha piloto alterna exploração, **batalha 5x5 ao primeiro gol**, exploração e **partida 11x11** (10 NPCs azuis + Davi contra 11 NPCs vermelhos), terminando no mapa.
-- Nova UI de objetivos, diálogos originais, viagem rápida validada no servidor, XP/nível, e tentativa de salvar etapa e XP via DataStore.
-- Corrigida a referência prematura à variável `phaseLocked` existente na v0.8.
-- **Ainda não é a campanha oficial completa**: mapas e diálogos são placeholders criados para o port, sem assets da Nintendo.
+- `GO_Light_Roblox_V0_10.rbxlx` — **112.837 bytes**, SHA256 `f82d6a70c0f887c9dd1af8a7e9345f3b1991f9e76dcbd9306bc89f661405d8fc`
+- `GO_Light_Roblox_V0_10_Pacote.zip` — **5.531.658 bytes, 36 arquivos**, SHA256 `361c449c87326fa68dd95ee66b54399feaf6e83ce9f626b075961ab3103f38f7`
+- Os dois arquivos foram gerados e fornecidos **como anexos do chat**, não enviados em binário a este repositório.
+- Novos scripts: `GOClub.server.luau` e `GOClub.client.luau`, preservando os quatro scripts anteriores da v0.9.
 
-## Downloads gerados no chat
+## O que foi implementado
 
-| Arquivo | Bytes | SHA-256 |
-|---|---:|---|
-| `GO_Light_Roblox_V0_9.rbxlx` | 91.987 | `8bbc3ffe298676663c46caf0c16ef6d1d2ffe42bdbb6c2ae80936d1a48086769` |
-| `GO_Light_Roblox_V0_9_Pacote.zip` | 5.515.299 | `9e3d9b95fe62595757cc87b56dd38cff77c2bad11d872b5c50d6a554bdb36e61` |
+1. **Time:** 10 companheiros originalmente criados para este protótipo + Davi (usuário); posição GK, DF, MF ou FW.
+2. **Recrutamento por cartas demonstrativas:** 6 candidatos opcionais, gastos em créditos, desbloqueios progressivos após etapas da campanha piloto.
+3. **Gerenciamento pelo jogador:** tecla **B** ou botão **EQUIPE**; selecionar carta, adquirir jogador e ocupar uma das 10 vagas compatíveis. Nenhuma alteração de elenco durante partida.
+4. **Verificações no servidor:** custo, ID da carta, posse, função, slots válidos, duplicação e limite de requisições.
+5. **Integração das partidas:** o código da v0.10 aplica os nomes e índices provisórios aos NPCs azuis antes de cada início, com leve influência do atributo demonstrativo de avaliação na velocidade e na potência de chute.
+6. **Recompensas e saves:** etapas 4 e 6 da história concedem créditos uma vez; inventário, moeda e lineup são salvos por `DataStoreService` quando possível ou ficam temporários na memória. **Não é persistência testada em produção**, nem economia de loja comercial.
+7. **Duração:** 5x5 = 60 segundos ao primeiro gol; 11x11 = 10 minutos (2×300s), em conformidade aproximada com a descrição oficial da Nintendo.
 
-O ZIP contém os quatro scripts Luau, o `.rbxlx`, a ponte R32 anterior, testes, instruções de instalação, ferramenta de auditoria Studio e roadmap. **Não** inclui ROM/CCI/`.xc`/GLB nativos comerciais.
+## Preservado da v0.9
 
-## Testes
+- Mundo de exploração **original e provisório** com três áreas, três NPCs e sete tarefas.
+- Passagem do mapa para batalha 5x5 e partida 11x11; retorno e XP demonstrativos.
+- Chute carregado, passe, domínio, desarme, IA simples, TP/energia, HUD, câmera e controle de bola pelo servidor.
+- Ponte para GLB nativo R32, ainda sem malha original.
 
-**54/54 testes automatizados Python aprovados**: integridade do XML, correspondência literal dos quatro scripts incorporados, ZIP, verificação de bytes R32 sintéticos, compatibilidade da partida e presença das transições de história.
+## QA
 
-**Não foi realizado Play real no Roblox Studio nem compilação oficial de Luau aqui.** O título de piloto jogável significa que existe fluxo em código para executar no Studio, não que esse fluxo já foi observado funcionando no motor.
+**64/64 testes automatizados Python aprovados** (incluem testes estáticos de elenco, formatos, protocolo, integridade exata de seis scripts embutidos no XML, recursos sintéticos do extrator R32 e CRC do ZIP).
 
-## Como testar
+**Não executamos Roblox Studio nesta sessão.** Os testes não confirmam compilação real de Luau, controles, física, DataStore, colisões, renderização ou campanha. A partida 11x11 ainda é um modelo simplificado e o piloto não corresponde à história integral original.
 
-1. Abra o `GO_Light_Roblox_V0_9.rbxlx` no Roblox Studio e pressione **Play**. Encontre o representante do clube.
-2. Converse, visite o treinador (botão CAMPO), vença a batalha curta, visite o olheiro (botão PRAÇA), inicie a partida 11x11, volte ao clube.
-3. **WASD** mover; **E** carregar/chutar; **Q** passe; **F** desarme; **G** domínio; **R** técnica original de demonstração; **V** calibrador Davi; **J** diagnóstico; **M** menu de viagem.
-4. Em **View > Output**, contexto Server, confira erros. Use `TESTAR_STORY_NO_STUDIO_V09.luau` da pasta do pacote na Command Bar para checagens estruturais; elas não substituem a partida manual.
-5. Para testar save persistente, use uma **cópia publicada de testes**, com Studio API Services habilitado. O DataStore não está validado em sessão publicada.
+## Teste operacional no Studio
 
-## Recursos R32 e Higgsfield
+1. Abra o `.rbxlx` v0.10 e clique **Play**.
+2. Na área de exploração, abra **EQUIPE (B)**; recrute **Alan (GK)** e selecione a vaga 1 de goleiro.
+3. Fale com o treinador e inicie o desafio 5x5; acima do NPC goleiro azul deve aparecer o nome **Alan**. Jogue, marque, volte ao mapa e confirme os créditos do objetivo.
+4. Continue a história até a partida 11x11; verifique os outros dez jogadores e a duração.
+5. Em **View → Output**, contexto **Server**, execute `TESTAR_ELENCO_NO_STUDIO_V10.luau` incluído no pacote.
+6. Para avaliar DataStore, publique **cópia de teste separada** e configure o acesso aos serviços de API. Não experimente na experiência de produção.
 
-A CCI R32/V2 de 3.114.641.408 bytes está identificada no Drive, mas o conector desta sessão não conseguiu baixá-la. O `cp0008m.xc` original tem SHA `8d5e213548d337be73f7a819a947ae7fb7e040d91096a011d88046306e33620e`. Sua conversão real, validação de UV/alfa/rig e importação Studio continuam pendentes.
+## R32, Higgsfield e limites
 
-O projeto Higgsfield encontrado, `78cf6dcb-1507-4e05-91dc-b6b9f0f087c2`, é um estudo *The Ogre*, não o GLB nativo do GO Light, e foi deixado intacto.
+- CCI de base: SHA256 `731ab0da2ef68d186c9c225ff0f22e421312094c822226fa77c62b76a7cf6f51`, 3.114.641.408 bytes.
+- Cabeça nativa `cp0008m.xc`: SHA256 `8d5e213548d337be73f7a819a947ae7fb7e040d91096a011d88046306e33620e`. Não extraída nesta sessão. O ZIP inclui ponte offline e Colab, sem ROM/CCI/GLB comercial.
+- Higgsfield projeto `78cf6dcb-1507-4e05-91dc-b6b9f0f087c2` continua como estudo separado de *The Ogre*, não é fonte nativa GO Light.
+- `PALPACK` deste checkpoint é **inspirado pela função de recrutamento**, não é o conteúdo proprietário nem os dados originais do 3DS.
 
-## Checkpoints e escopo completo
+## Continuidade
 
-- [CHECKPOINT_V09.json](CHECKPOINT_V09.json) — artefatos, SHA, testes e pendências.
-- [ESCOPO_JOGO_COMPLETO.md](ESCOPO_JOGO_COMPLETO.md) — matriz integral de campanha, futebol, elenco, técnicas, Fighting Spirits, saves e mais.
-- [CHECKPOINT_V08.json](CHECKPOINT_V08.json) — checkpoint anterior.
+- [CHECKPOINT_V10.json](CHECKPOINT_V10.json) — hashes, trabalho implementado e QA.
+- [ESCOPO_JOGO_COMPLETO.md](ESCOPO_JOGO_COMPLETO.md) — matriz de cobertura e pendências da campanha integral.
+- [CHECKPOINT_V09.json](CHECKPOINT_V09.json) — base anterior.
 
-Não publicar arquivos proprietários extraídos do jogo original sem autorização.
+Fontes oficiais: [Nintendo GO Light](https://www.nintendo.com/en-gb/Games/Nintendo-3DS-games/Inazuma-Eleven-GO-Light-883636.html), [Nintendo PalPack](https://www.nintendo.com/en-gb/News/2014/June/In-shops-and-on-Nintendo-eShop-now-Inazuma-Eleven-GO-Light-and-Inazuma-Eleven-GO-Shadow-894016.html), [Roblox DataStore](https://create.roblox.com/docs/cloud-services/data-stores).
+
+Não versionar ou distribuir conteúdos de terceiros sem a permissão necessária.
