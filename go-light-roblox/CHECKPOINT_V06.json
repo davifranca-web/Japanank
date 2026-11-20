@@ -1,0 +1,59 @@
+{
+  "version": "GO_LIGHT_ROBLOX_V0_6",
+  "date": "2026-11-20",
+  "previous_checkpoint": "go-light-roblox/CHECKPOINT_V05.json",
+  "baseline": {
+    "game": "Inazuma Eleven GO Light (EU, 3DS)",
+    "mod": "R32/V2, Davi no slot Tenma cp0008",
+    "never_merge": "R23",
+    "cci_sha256": "731ab0da2ef68d186c9c225ff0f22e421312094c822226fa77c62b76a7cf6f51",
+    "native_model": "cp0008m.xc",
+    "native_model_sha256": "8d5e213548d337be73f7a819a947ae7fb7e040d91096a011d88046306e33620e"
+  },
+  "build": {
+    "rbxlx": {
+      "name": "GO_Light_Roblox_V0_6.rbxlx",
+      "bytes": 54420,
+      "sha256": "fd8e3f0d49715afd44cdcd5ccc26a8763c6d2ace8dfefc2906e151230fdc89db"
+    },
+    "zip": {
+      "name": "GO_Light_Roblox_V0_6_Pacote.zip",
+      "bytes": 5486731,
+      "sha256": "6b885d04a9c3ecbb7ff53eac77ebadcee906b02e95072ba66dd9201acbb30e4a",
+      "files": 21
+    }
+  },
+  "changes": [
+    "5v5 match with two 150-second halves and 4-second halftime",
+    "Ball-goal plane crossing detection based on previous/current sampled world coordinates",
+    "Server-authoritative out-of-play reset and kickoff positioning for NPCs and player",
+    "Match statistics tracked server-side: shots, blue passes, goalkeeper saves, out-of-play",
+    "Fulltime win/draw/loss overlay and manual Rematch: N, controller DPadDown or HUD button",
+    "Separate cooldown for prototype technique and validates rematch only in END phase",
+    "Preserves v0.5 Motor6D head calibrator and 4 head camera views",
+    "Adds Roblox Studio diagnostic command for MeshPart IDs, texture markers, transparency, size"
+  ],
+  "qa": {
+    "python_unittest_count": 27,
+    "passed": 27,
+    "failed": 0,
+    "xml_parsed": true,
+    "embedded_scripts_equal_source": true,
+    "zip_crc_valid": true,
+    "roblox_studio_runtime_executed": false,
+    "native_r32_glb_present": false,
+    "luau_engine_compiled": false
+  },
+  "cautions": [
+    "Playable arena is newly authored Roblox prototype, not 3DS runtime, campaign, cutscenes, supertechniques, or a full port",
+    "The source model must be extracted from own R32 CCI and imported via Studio; no copyrighted model bytes shipped",
+    "MeshPart source SHA attribute is declarative: only offline converter validates SHA; visual textures/rigging require in-Studio verification",
+    "Higgsfield 3D project 78cf6dcb-1507-4e05-91dc-b6b9f0f087c2 is The Ogre visual reference and not native R32"
+  ],
+  "next": [
+    "Run v0.6 in Roblox Studio, collect screenshot and Output logs",
+    "Convert verified cp0008m.xc to cp0008m.glb from user's R32 source",
+    "Import model and run AUDITAR_DAVI_R32_STUDIO.luau, calibrate in Play with V",
+    "Fix observed in-engine bugs before asserting gameplay QA"
+  ]
+}
